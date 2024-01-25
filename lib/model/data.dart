@@ -1,0 +1,56 @@
+import 'detail_data.dart';
+
+class Data {
+  static var arrData = [
+    {
+      "img": "assets/images/a.jpg",
+      "title": "Jachtbedienung und Jachtführung",
+      "total_que": "${DetailData.arrA.length}"
+    },
+    {
+      "img": "assets/images/b.jpg",
+      "title": "Jachtbau und Schiffstechnik",
+      "total_que": "\(arrB.count)"
+    },
+    {
+      "img": "assets/images/c.jpg",
+      "title": "Navigation",
+      "total_que": "\(arrC.count)"
+    },
+    {
+      "img": "assets/images/d.jpg",
+      "title": "Terrestrische Navigation",
+      "total_que": "\(arrD.count)"
+    },
+    {
+      "img": "assets/images/e.jpg",
+      "title": "Rechtliche Grundlagen",
+      "total_que": "\(arrE.count)"
+    },
+    {
+      "img": "assets/images/f.jpg",
+      "title": "Grundlagen Wetterkunde",
+      "total_que": "\(arrF.count)"
+    },
+    {
+      "img": "assets/images/g.jpg",
+      "title": "Seegang, Sicherheit",
+      "total_que": "\(arrG.count)"
+    },
+    {
+      "img": "assets/images/h.jpg",
+      "title": "Lichterführung",
+      "total_que": "\(arrH.count)"
+    },
+    {
+      "img": "assets/images/i.png",
+      "title": "Flaggenalphabet und UKW Funk",
+      "total_que": "\(arrI.count)"
+    },
+    {
+      "img": "assets/images/error.jpeg",
+      "title": "Sparen Sie sich falsche Fragen",
+      "total_que": "\(SaveData.arrK.count)"
+    },
+  ];
+}
