@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../model/detail_data.dart';
-import '../../model/question_model.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
@@ -31,11 +29,24 @@ class _DetailScreenState extends State<DetailScreen> {
 
     for (int i = 0; i < containerBackgroundColors.length; i++) {
       if (i == selectedAnswer - 1) {
-        // Đáp án đã chọn
         if (selectedAnswer == correctAnswer) {
-          containerBackgroundColors[i] = Colors.green; // Màu xanh cho đáp án đúng
+          containerBackgroundColors[i] = Colors.green;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Center(child: Text("You have selected the correct answer.")),
+              duration: Duration(seconds: 1),
+              backgroundColor: Colors.transparent,
+            ),
+          );
         } else {
-          containerBackgroundColors[i] = Colors.red; // Màu đỏ cho đáp án sai
+          containerBackgroundColors[i] = Colors.red;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Center(child: Text( "You have selected the wrong answer.")),
+              duration: Duration(seconds: 1),
+                backgroundColor: Colors.transparent,
+            ),
+          );// Màu đỏ cho đáp án sai
         }
       } else {
         // Các đáp án không được chọn
