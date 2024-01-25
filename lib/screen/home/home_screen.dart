@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kustenpatent/screen/home/widget/header.dart';
 
 import '../../model/data.dart';
+import '../detail/detail_screen.dart';
 class HomeScreen extends StatefulWidget {
    const HomeScreen({super.key});
 
@@ -42,53 +43,78 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisCount: 2,
                         ),
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            color: Colors.blue,
-                            margin: const EdgeInsets.all(4.0),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  '${Data.arrData[index]["img"]}',
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                                Positioned(
-                                  left: 0,
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Container(
-                                    color: Colors.black.withOpacity(0.3), // Màu nền cho văn bản
-                                    height: 40,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            constraints: BoxConstraints(
-                                              maxWidth: MediaQuery.of(context).size.width / 2,
-                                              maxHeight: 50,// Set maximum width to half of the screen width
-                                            ),
-                                            child: Text(
-                                              '${Data.arrData[index]["title"]}',
-                                              textAlign: TextAlign.left,
-                                              style: const TextStyle(
-                                                color: Colors.white, // Màu văn bản
+                          return GestureDetector(
+                            onTap: (){
+                              switch (index) {
+                                case 0:  Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const DetailScreen(), // Replace 'SecondScreen()' with the widget for your new screen
+                                  ),
+                                );
+                                break;
+                                case 1: print("1234");
+                                break;
+                                case 2: print("1235");
+                                break;
+                              }
+                            },
+                            child: Container(
+                              color: Colors.blue,
+                              margin: const EdgeInsets.all(4.0),
+                              child: Stack(
+                                children: [
+                                  Image.asset(
+                                    '${Data.arrData[index]["img"]}',
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Positioned(
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Container(
+                                      color: Colors.black.withOpacity(0.3), // Màu nền cho văn bản
+                                      height: 40,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Expanded(
+                                            child: Container(
+                                              constraints: BoxConstraints(
+                                                maxWidth: MediaQuery.of(context).size.width / 2,
+                                                maxHeight: 50,// Set maximum width to half of the screen width
+                                              ),
+                                              child: Text(
+                                                '${Data.arrData[index]["title"]}',
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                  color: Colors.white, // Màu văn bản
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        const Text(
-                                          '123',
-                                          style: TextStyle(
-                                            color: Colors.white, // Màu văn bản
-                                          ),
-                                        ),
-                                      ],
+                                          Column(
+                                            children: [
+                                              Text(
+                                                '${Data.arrData[index]["total_que"]}',
+                                                style: const TextStyle(
+                                                  color: Colors.white, // Màu văn bản
+                                                ),
+                                              ),
+                                              const Text("Fragen",
+                                                style: TextStyle(
+                                                color: Colors.white, // Màu văn bản
+                                              ),)
+                                            ],
+                                          )
+
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         },

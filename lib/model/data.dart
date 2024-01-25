@@ -5,7 +5,7 @@ class Data {
     {
       "img": "assets/images/a.jpg",
       "title": "Jachtbedienung und Jachtführung",
-      "total_que": "${DetailData.arrA.length}"
+      "total_que": "${DetailData.arrALength}"
     },
     {
       "img": "assets/images/b.jpg",
