@@ -13,7 +13,7 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      color: Colors.blueAccent,
+      color: const Color(0xFF19598A),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,

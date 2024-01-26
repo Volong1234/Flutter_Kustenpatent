@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kustenpatent/screen/home/widget/header.dart';
 
 import '../../model/data.dart';
+import '../../model/detail_data.dart';
 import '../detail/detail_screen.dart';
 class HomeScreen extends StatefulWidget {
    const HomeScreen({super.key});
@@ -46,15 +47,40 @@ class _HomeScreenState extends State<HomeScreen> {
                           return GestureDetector(
                             onTap: (){
                               switch (index) {
-                                case 0:  Navigator.of(context).push(
+                                case 0:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrA,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                break;
+                                case 1: Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => const DetailScreen(), // Replace 'SecondScreen()' with the widget for your new screen
+                                    builder: (context) => DetailScreen(),
+                                    settings: RouteSettings(arguments: {
+                                      "arrA": DetailData.arrB,
+                                      "arrB": Data.arrData,
+                                      "index": index,
+                                    }),
                                   ),
                                 );
                                 break;
-                                case 1: print("1234");
-                                break;
-                                case 2: print("1235");
+                                case 2:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrC,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
                                 break;
                               }
                             },

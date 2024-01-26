@@ -10,12 +10,12 @@ class Data {
     {
       "img": "assets/images/b.jpg",
       "title": "Jachtbau und Schiffstechnik",
-      "total_que": "\(arrB.count)"
+      "total_que": "${DetailData.arrBLength}"
     },
     {
       "img": "assets/images/c.jpg",
       "title": "Navigation",
-      "total_que": "\(arrC.count)"
+      "total_que": "${DetailData.arrCLength}"
     },
     {
       "img": "assets/images/d.jpg",
