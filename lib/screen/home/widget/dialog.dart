@@ -65,8 +65,8 @@ class CustomDialog extends StatelessWidget {
               onTap: (){Navigator.of(context).pop();},
               child: Image.asset(
                 'assets/images/closec.png',
-                width: 40,
-                height: 40,
+                width: 30,
+                height: 30,
                 fit: BoxFit.fill,
               ),
             ),

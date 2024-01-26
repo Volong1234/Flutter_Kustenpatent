@@ -20,17 +20,17 @@ class Data {
     {
       "img": "assets/images/d.jpg",
       "title": "Terrestrische Navigation",
-      "total_que": "\(arrD.count)"
+      "total_que": "${DetailData.arrDLength}"
     },
     {
       "img": "assets/images/e.jpg",
       "title": "Rechtliche Grundlagen",
-      "total_que": "\(arrE.count)"
+      "total_que": "${DetailData.arrELength}"
     },
     {
       "img": "assets/images/f.jpg",
       "title": "Grundlagen Wetterkunde",
-      "total_que": "\(arrF.count)"
+      "total_que": "${DetailData.arrFLength}"
     },
     {
       "img": "assets/images/g.jpg",

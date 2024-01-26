@@ -82,6 +82,44 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   );
                                 break;
+                                case 3:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrD,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+
+                                case 4:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrE,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+
+                                case 5:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrF,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
                               }
                             },
                             child: Container(
