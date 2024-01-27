@@ -3,6 +3,7 @@ import 'package:kustenpatent/screen/home/widget/header.dart';
 
 import '../../model/data.dart';
 import '../../model/detail_data.dart';
+import '../../model/save_data.dart';
 import '../detail/detail_screen.dart';
 class HomeScreen extends StatefulWidget {
    const HomeScreen({super.key});
@@ -12,7 +13,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
+  List<Map<String, String>> arrK = [];
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   SaveData.loadData().then((data) {
+  //     setState(() {
+  //       arrK = data;
+  //     });
+  //   });
+  //   print("1222");
+  //   print(arrK);
+  // }
+
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Column(
@@ -119,6 +133,57 @@ class _HomeScreenState extends State<HomeScreen> {
                                       }),
                                     ),
                                   );
+                                  break;
+                                case 6:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrG,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+                                case 7:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrH,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+                                case 8:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": DetailData.arrI,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+                                case 9:
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailScreen(),
+                                      settings: RouteSettings(arguments: {
+                                        "arrA": SaveData.arrK,
+                                        "arrB": Data.arrData,
+                                        "index": index,
+                                        "isTrue": true,
+                                      }),
+                                    ),
+                                  );
+                                  break;
+                                default:
                                   break;
                               }
                             },

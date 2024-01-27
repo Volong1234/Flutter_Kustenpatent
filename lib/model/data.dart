@@ -1,3 +1,5 @@
+import 'package:kustenpatent/model/save_data.dart';
+
 import 'detail_data.dart';
 
 class Data {
@@ -35,22 +37,22 @@ class Data {
     {
       "img": "assets/images/g.jpg",
       "title": "Seegang, Sicherheit",
-      "total_que": "\(arrG.count)"
+      "total_que": "${DetailData.arrGLength}"
     },
     {
       "img": "assets/images/h.jpg",
       "title": "Lichterführung",
-      "total_que": "\(arrH.count)"
+      "total_que": "${DetailData.arrHLength}"
     },
     {
       "img": "assets/images/i.png",
       "title": "Flaggenalphabet und UKW Funk",
-      "total_que": "\(arrI.count)"
+      "total_que": "${DetailData.arrILength}"
     },
     {
       "img": "assets/images/error.jpeg",
       "title": "Sparen Sie sich falsche Fragen",
-      "total_que": "\(SaveData.arrK.count)"
+      "total_que": "${SaveData.arrK.length}"
     },
   ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../model/detail_data.dart';
+import '../../model/save_data.dart';
 import '../home/widget/dialog.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -11,6 +12,11 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  @override
+  void dispose() {
+    SaveData.saveData(SaveData.arrK);
+    super.dispose();
+  }
 
   void resetState() {
     setState(() {
@@ -55,29 +61,6 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  void checkAnswer(int selectedAnswer) {
-    final correctAnswer =
-        int.parse(DetailData.arrA[currentQuestionIndex]["right"]!);
-
-    for (int i = 0; i < containerBackgroundColors.length; i++) {
-      if (i == selectedAnswer - 1) {
-        if (selectedAnswer == correctAnswer) {
-          containerBackgroundColors[i] = Colors.green;
-          showAnswerResult(true);
-        } else {
-          containerBackgroundColors[i] = Colors.red;
-          showAnswerResult(false);// Màu đỏ cho đáp án sai
-        }
-      } else {
-        containerBackgroundColors[i] = Colors.transparent; // Màu trắng
-      }
-    }
-
-    setState(() {
-      selectedButtonIndex = selectedAnswer;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> arguments =
@@ -85,6 +68,67 @@ class _DetailScreenState extends State<DetailScreen> {
     final List<Map<String, String>> arrA = arguments["arrA"];
     final List<Map<String, String>> arrB = arguments["arrB"];
     final int index = arguments["index"];
+    final bool? isTrue = arguments["isTrue"];
+
+    void checkAnswer(int selectedAnswer) {
+      final correctAnswer =
+      int.parse(DetailData.arrA[currentQuestionIndex]["right"]!);
+
+      for (int i = 0; i < containerBackgroundColors.length; i++) {
+        if (i == selectedAnswer - 1) {
+          if (selectedAnswer == correctAnswer) {
+            containerBackgroundColors[i] = Colors.green;
+            showAnswerResult(true);
+            bool elementExists = SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
+            //error
+            if (arguments["isTrue"] == false) {
+              if (elementExists) {
+                int long = SaveData.arrK.indexWhere((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
+                if (long != -1) {
+                  if (SaveData.arrK.length > 1) {
+                    SaveData.arrK.removeAt(SaveData.arrK.length);
+                  } else {
+                    containerBackgroundColors[i] = Colors.green;
+                    print("SaveData.arrK has only one element and cannot be removed.");
+                  }
+                } else {
+                  print("Invalid index");
+                }
+              } else {
+                print("The element does not exist in SaveData.arrK");
+              }
+            }
+
+          } else {
+            containerBackgroundColors[i] = Colors.red;
+            showAnswerResult(false);// Màu đỏ cho đáp án sai
+            int indexToInsert = currentQuestionIndex; // Vị trí muốn chèn
+            bool elementExists = SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
+
+            if (!elementExists) {
+              if (indexToInsert >= 0 && indexToInsert <= SaveData.arrK.length) {
+                SaveData.arrK.insert(indexToInsert, arrA[currentQuestionIndex]);
+              } else {
+                print("Invalid insert index");
+              }
+            } else {
+              print("The element already exists in the SaveData.arrK array");
+            }
+            // if (!SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"])) {
+            //   SaveData.arrK.add(arrA[currentQuestionIndex]);
+            // } else {
+            //   print("The element already exists in the SaveData.arrK array");
+            // }
+          }
+        } else {
+          containerBackgroundColors[i] = Colors.transparent; // Màu trắng
+        }
+      }
+
+      setState(() {
+        selectedButtonIndex = selectedAnswer;
+      });
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF19598A),
