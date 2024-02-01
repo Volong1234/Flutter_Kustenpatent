@@ -81,6 +81,7 @@ class _DetailScreenState extends State<DetailScreen> {
             showAnswerResult(true);
             bool elementExists = SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
             //error
+
             if (arguments["isTrue"] == false) {
               if (elementExists) {
                 int long = SaveData.arrK.indexWhere((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
