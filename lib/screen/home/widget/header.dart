@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Header extends StatefulWidget {
@@ -70,9 +71,12 @@ class _HeaderState extends State<Header> {
 
                       final Uri phoneLaunchUri =
                           Uri(scheme: 'tel', path: phoneNumber);
-
-                      if (await canLaunch(phoneLaunchUri.toString())) {
-                        await launch(phoneLaunchUri.toString());
+                      final PermissionStatus status =
+                          await Permission.phone.request();
+                      if (status.isGranted) {
+                        if (await canLaunch(phoneLaunchUri.toString())) {
+                          await launch(phoneLaunchUri.toString());
+                        }
                       } else {
                         // Handle the case where the device can't make phone calls.
                         showDialog(
