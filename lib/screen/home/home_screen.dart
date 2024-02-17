@@ -12,20 +12,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with RouteAware{
   List<Map<String, String>> arrK = [];
+  List<Map<String, String>> loadedData = [];
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   SaveData.loadData().then((data) {
-  //     setState(() {
-  //       arrK = data;
-  //     });
-  //   });
-  //   print("1222");
-  //   print(arrK);
-  // }
+  @override
+  initState() {
+    super.initState();
+  }
 
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -71,7 +65,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                 break;
                                 case 1: Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -82,7 +87,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                       "index": index,
                                     }),
                                   ),
-                                );
+                                ).then((returnValue) {
+                                  if (returnValue != null) {
+                                    setState(() {
+                                      Data.arrData[9]["total_que"] = returnValue.toString();
+                                      for (int i = 0; i < Data.arrData.length; i++) {
+                                        if (i == 9) {
+                                          Data.arrData[i]["total_que"] = returnValue.toString();
+                                        }
+                                      }
+                                    });
+                                  }
+                                });
                                 break;
                                 case 2:
                                   Navigator.of(context).push(
@@ -94,7 +110,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                 break;
                                 case 3:
                                   Navigator.of(context).push(
@@ -106,7 +133,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
 
                                 case 4:
@@ -119,7 +157,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
 
                                 case 5:
@@ -132,7 +181,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
                                 case 6:
                                   Navigator.of(context).push(
@@ -144,7 +204,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
                                 case 7:
                                   Navigator.of(context).push(
@@ -156,7 +227,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
                                 case 8:
                                   Navigator.of(context).push(
@@ -168,7 +250,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "index": index,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                        for (int i = 0; i < Data.arrData.length; i++) {
+                                          if (i == 9) {
+                                            Data.arrData[i]["total_que"] = returnValue.toString();
+                                          }
+                                        }
+                                      });
+                                    }
+                                  });
                                   break;
                                 case 9:
                                   Navigator.of(context).push(
@@ -178,10 +271,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                         "arrA": SaveData.arrK,
                                         "arrB": Data.arrData,
                                         "index": index,
-                                        "isTrue": true,
+                                        //"isTrue": true,
                                       }),
                                     ),
-                                  );
+                                  ).then((returnValue) {
+                                    if (returnValue != null) {
+                                      setState(() {
+                                        Data.arrData[9]["total_que"] = returnValue.toString();
+                                      });
+                                    }
+                                  });
                                   break;
                                 default:
                                   break;
@@ -226,7 +325,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Column(
                                             children: [
                                               Text(
-                                                '${Data.arrData[index]["total_que"]}',
+                                             '${Data.arrData[index]["total_que"]}',
                                                 style: const TextStyle(
                                                   color: Colors.white, // Màu văn bản
                                                 ),

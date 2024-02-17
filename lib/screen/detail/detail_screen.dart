@@ -12,6 +12,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+
   @override
   void dispose() {
     SaveData.saveData(SaveData.arrK);
@@ -55,7 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 : "Oops, wrong answer, try again!",
           ),
         ),
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         backgroundColor: Colors.transparent,
       ),
     );
@@ -79,48 +80,35 @@ class _DetailScreenState extends State<DetailScreen> {
           if (selectedAnswer == correctAnswer) {
             containerBackgroundColors[i] = Colors.green;
             showAnswerResult(true);
-            bool elementExists = SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
-            //error
-
-            if (arguments["isTrue"] == false) {
-              if (elementExists) {
-                int long = SaveData.arrK.indexWhere((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
-                if (long != -1) {
-                  if (SaveData.arrK.length > 1) {
-                    SaveData.arrK.removeAt(SaveData.arrK.length);
-                  } else {
-                    containerBackgroundColors[i] = Colors.green;
-                    print("SaveData.arrK has only one element and cannot be removed.");
-                  }
-                } else {
-                  print("Invalid index");
-                }
-              } else {
-                print("The element does not exist in SaveData.arrK");
-              }
+            if (index == 9){
+              int indexToInsert = currentQuestionIndex;
+              Future.delayed(const Duration(seconds: 1), () {
+                SaveData.arrK.removeAt(indexToInsert);
+              });
             }
-
           } else {
             containerBackgroundColors[i] = Colors.red;
-            showAnswerResult(false);// Màu đỏ cho đáp án sai
-            int indexToInsert = currentQuestionIndex; // Vị trí muốn chèn
+            showAnswerResult(false);
+            int indexToInsert = currentQuestionIndex;
             bool elementExists = SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"]);
-
-            if (!elementExists) {
-              if (indexToInsert >= 0 && indexToInsert <= SaveData.arrK.length) {
-                SaveData.arrK.insert(indexToInsert, arrA[currentQuestionIndex]);
+            if (index != 9 ){
+              if (!elementExists) {
+                if (indexToInsert >= 0 && indexToInsert <= SaveData.arrK.length) {
+                  //SaveData.arrK.insert(indexToInsert, arrA[currentQuestionIndex]);
+                  SaveData.arrK.add(arrA[currentQuestionIndex]);
+                } else {
+                  print("Invalid insert index");
+                }
               } else {
-                print("Invalid insert index");
+                print("The element already exists in the SaveData.arrK array");
               }
-            } else {
-              print("The element already exists in the SaveData.arrK array");
+              // if (!SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"])) {
+              //   SaveData.arrK.add(arrA[currentQuestionIndex]);
+              // } else {
+              //   print("The element already exists in the SaveData.arrK array");
+              // }
             }
-            // if (!SaveData.arrK.any((element) => element["question"] == arrA[currentQuestionIndex]["question"])) {
-            //   SaveData.arrK.add(arrA[currentQuestionIndex]);
-            // } else {
-            //   print("The element already exists in the SaveData.arrK array");
-            // }
-          }
+            }
         } else {
           containerBackgroundColors[i] = Colors.transparent; // Màu trắng
         }
@@ -130,9 +118,43 @@ class _DetailScreenState extends State<DetailScreen> {
         selectedButtonIndex = selectedAnswer;
       });
     }
+    if (arrA.isEmpty) {
+      return Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xFF19598A),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context, SaveData.arrK.length);
+              },
+            ),
+            title: const Center(
+              child: Text(
+                "There are no wrong sentences",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+      ),
+        body: const Center(
+          child: Text(
+          'No data available!',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF19598A),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context, SaveData.arrK.length);
+          },
+        ),
         title: Center(
           child: Text(
             "${arrB[index]["title"]}",

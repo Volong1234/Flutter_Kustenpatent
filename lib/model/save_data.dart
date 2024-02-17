@@ -5,33 +5,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SaveData {
   static var keySave = "SaveArray";
 
-  static var arrK = [
-    {
-      "question": "Was sind die wichtigsten Flaggen des internationalen Flaggenalphabets, die ständig an Bord sein sollten?",
-      "ans1": "die Flaggen Alpha, Charlie und Bravo.",
-      "ans2": "die Flaggen Quebec, Charlie und November.",
-      "ans3": "die Flaggen Oscar, Sierra und Bravo.",
-      "right": "2"
-    },
-  ];
+  static List<Map<String, String>> arrK = [];
 
-  static void saveData(List<Map<String, dynamic>> arrK) async {
+  static Future<void> saveData(List<Map<String, String>> dataList) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(
-        "SaveData", arrK.map((e) => e.toString()).toList());
+    List<String> jsonDataList = dataList.map((data) => json.encode(data)).toList();
+    await prefs.setStringList(keySave, jsonDataList);
   }
 
   static Future<List<Map<String, String>>> loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? dataList = prefs.getStringList("SaveData");
-    if (dataList != null) {
-      List<Map<String, String>> arrK = dataList.map((e) {
-        final Map<String, dynamic> parsedData = json.decode(e);
-        return Map<String, String>.from(parsedData);
+    List<String>? jsonDataList = prefs.getStringList(keySave);
+    if (jsonDataList != null) {
+      List<Map<String, String>> dataList = jsonDataList.map((jsonData) {
+        Map<String, dynamic> parsedData = json.decode(jsonData);
+        return parsedData.map((key, value) => MapEntry(key, value.toString()));
       }).toList();
-      return arrK;
+      return dataList;
     } else {
       return [];
     }
   }
-}
+  }
